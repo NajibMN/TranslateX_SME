@@ -26,14 +26,6 @@
   </head>
 
   <body>
-    <a
-      href="https://translatex.imaginecollabplus.com/"
-      class="floating-button"
-      target="_blank"
-    >
-      <img src="images/X.ico" alt="Icon" />
-      Visit TranslateX Now!
-    </a>
     <main>
       <div class="sme360-page">
         <section class="section-banner">
@@ -316,24 +308,29 @@
               </div>
 
               <form
-                class="enquiries-form"
-                action="https://formsubmit.co/David@imagineaigroup.com"
+                action="https://formsubmit.co/aitech@digifiv.com"
                 method="POST"
+                id="contactForm"
               >
+                <!-- Remove the static subject input -->
                 <input type="hidden" name="_template" value="table" />
                 <input type="text" name="_honey" style="display: none" />
-
-                <!-- CC another email -->
+                <input type="hidden" name="_captcha" value="false" />
                 <input
                   type="hidden"
                   name="_cc"
                   value="enquiry@imagineaigroup.com"
                 />
+
+                <!-- Add these before your form fields -->
+                <input type="hidden" name="_format" value="plain" />
+                <!-- For plain text emails -->
                 <input
                   type="hidden"
-                  name="_next"
-                  value="https://najibmn.github.io/TranslateX_SME/THANKYOU.html"
+                  name="_autoresponse"
+                  value="Thank you for your inquiry about CvXtract!"
                 />
+                <!-- Auto-response to sender -->
 
                 <div class="form-grid">
                   <div class="form-group">
@@ -395,10 +392,94 @@
                   </svg>
                 </button>
               </form>
+              <div id="thankYouModal" class="modal">
+                <div class="modal-content">
+                  <span class="close-modal">&times;</span>
+                  <p class="modal-p-1">THANK YOU!</p>
+                  <p class="modal-p-2">
+                    Your free trial will be emailed to you
+                  </p>
+                  <p class="modal-p-3">CONTACT US</p>
+                  <p class="modal-p-4">https://digifiv.com/</p>
+                  <p class="modal-p-5">aitech@digifiv.com</p>
+                  <p class="modal-p-6">01x-xxxxxxx</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
       </div>
     </main>
+    <script>
+      const modal = document.getElementById("thankYouModal");
+      const form = document.getElementById("contactForm");
+      const closeBtn = document.querySelector(".close-modal");
+
+      // Paste your new deployment URL here
+      const GOOGLE_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbx1H4MhJlmqYUzBkoSnxIR4HIT4AXjth9QLfcOrXSUUhmOsazLOwHdj9NNw-sVAnE8b/exec";
+
+      function showModal() {
+        modal.classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        modal.classList.remove("show");
+        document.body.style.overflow = "";
+      }
+
+      closeBtn.onclick = closeModal;
+
+      window.onclick = function (event) {
+        if (event.target === modal) {
+          closeModal();
+        }
+      };
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        try {
+          // Submit to FormSubmit
+          await fetch("https://formsubmit.co/ajax/aitech@digifiv.com", {
+            method: "POST",
+            body: formData,
+          });
+
+          // Prepare data for Google Sheets
+          const sheetData = new URLSearchParams({
+            name: formData.get("name"),
+            email: formData.get("email"),
+            mobile: formData.get("mobile"),
+            business: formData.get("business"),
+            message: formData.get("message"),
+          });
+
+          // Log data being sent
+          console.log("Sending to Google Sheets:", sheetData.toString());
+
+          // Submit to Google Sheets using GET method to avoid CORS
+          const response = await fetch(
+            `${GOOGLE_SCRIPT_URL}?${sheetData.toString()}`,
+            {
+              method: "GET",
+              mode: "no-cors",
+            }
+          );
+
+          console.log("Response:", response);
+          showModal();
+          form.reset();
+        } catch (error) {
+          console.error("Error:", error);
+          alert(
+            "Form submitted successfully, but there was an error updating the spreadsheet."
+          );
+        }
+      });
+    </script>
   </body>
 </html>
