@@ -3,6 +3,53 @@
   --v-theme-rgb-sme360: 4, 128, 220;
 }
 
+.About-Digifiv {
+  background-color: transparent;
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8%;
+  padding-bottom: 8%;
+  padding-left: 8%;
+  padding-right: 8%;
+  justify-content: center;
+}
+
+.About-Digifiv-div1 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 70%;
+}
+
+.About-Digifiv h2 {
+  font-size: 2rem !important;
+  font-weight: 500;
+  text-transform: capitalize;
+  padding: 0;
+  margin: 0;
+}
+
+.About-Digifiv-span1 {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  padding-right: 2.5%;
+}
+.About-Digifiv-span2 {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  padding-left: 2.5%;
+  justify-content: center;
+  align-items: center;
+}
+
 .sme360-theme {
   color: var(--v-theme-sme360) !important;
 }
@@ -105,20 +152,29 @@ ul.caret-right li:before {
   padding-left: 2rem;
   position: relative;
   width: 1px;
-  display: none;
+  display: block;
 }
 .sme360-about-portal__vertical-line:before {
   background-color: var(--color-secondary);
   content: "";
-  height: 95%;
+  height: 102%;
   left: 0;
   position: absolute;
   top: 5%;
   width: 1px;
 }
-@media (max-width: 1024px) {
+
+.sme360-about-portal__container2 {
+  display: flex;
+  padding: clamp(2rem, calc(-4rem + 10vw), 8rem)
+    clamp(5rem, calc(-1rem + 10vw), 11rem);
+  padding-top: 8rem; /* Example value */
+  padding-bottom: 14rem; /* Example value */
+}
+
+@media (max-width: 1023px) {
   .sme360-about-portal__vertical-line {
-    display: block;
+    display: none;
   }
   .margin-bottom-3 {
     text-align: start;
@@ -183,7 +239,7 @@ ul.caret-right li:before {
   padding-left: 0;
   padding-top: 0;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .sme360-about-portal__first__right__gallery-image-wrapper {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
@@ -480,7 +536,7 @@ ul.caret-right li:before {
   margin-bottom: 1rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .sme360-about-portal__container {
     padding: 22px 24px;
   }
@@ -492,6 +548,8 @@ ul.caret-right li:before {
   }
 }
 @media (max-width: 767px) {
+
+
   .grid-template-2 {
     grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
   }
@@ -661,7 +719,7 @@ body {
   padding: 0;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .sme360-banner-text {
     text-align: center;
   }
@@ -760,7 +818,48 @@ body {
 }
 
 /* Keep existing responsive code */
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
+  .About-Digifiv-div1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 70%;
+  }
+
+  .About-Digifiv-span1 {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+  .About-Digifiv-span2 {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-top: 5%;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+  }
+
+  .sme360-about-portal__first-content__left__heading {
+    padding-top: 6%;
+  }
+
+  .sme360-about-portal__container2 {
+    padding-top: 5%;
+    padding-bottom: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
   .sme360-bento-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -778,9 +877,47 @@ body {
   .sme360-qualities__heading h2 {
     font-size: 2rem;
   }
+
+  .About-Digifiv-div1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 85%;
+  }
+
+  .About-Digifiv-span1 {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .About-Digifiv-span2 {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    padding-top: 10%;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+  }
+
+  .sme360-about-portal__first-content__left__heading {
+    padding-top: 6%;
+  }
+
+  .sme360-about-portal__container2 {
+    padding-top: 16%;
+    padding-bottom: 30%;
+    padding-right: 10%;
+    padding-left: 10%;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .sme360-qualities__container {
     padding: 2rem 1rem;
   }
